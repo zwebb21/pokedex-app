@@ -1,0 +1,17 @@
+
+#video-container{
+
+    border-radius: 40px;
+    }
+    
+    
+    .blur-card {
+        filter: blur(4px);
+      }
+      .blur-card.visible {
+        filter: blur(0);
+        opacity: 1;
+        transform: translateY(0);
+      }
+    
+
