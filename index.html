@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pkemon Api Pokedex</title>
+    <title>Pokemon Api Pokedex</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
@@ -15,6 +15,43 @@ text-align: center;
 
 
 }
+
+.pokedex-container {
+      background: #58595a;
+      border-radius: 12px;
+      border: 5px solid rgb(58, 57, 57);
+    
+      padding: 20px;
+      box-shadow: 5px 4px 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 40px auto;
+    }
+
+    .pokemon-item {
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background: rgb(102, 182, 5);
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .pokemon-item:hover {
+      background: #088a01;
+      color: rgb(190, 216, 20);
+      transform: translateX(5px);
+    }
+
+    .pokedex-title {
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+
+
+
 
 
 #pokedex img{
@@ -36,8 +73,8 @@ display: inline-block;
 }
 
 /* screen css */
-#pokedex-body-plate {
-    width: 650px;
+#pokedex-body-plate { 
+    width: auto;
     height: 700px;
     margin: auto;
     display: flex;
@@ -51,14 +88,14 @@ display: inline-block;
 
     width: 580px;
     height:400px;
-    background-color: #d7e8b9;
+    background-color: #e1e8b9;
     color: rgb(0, 0, 0);
     font-family: 'Courier New', Courier, monospace;
     padding: 20px;
     box-sizing: border-box;
     border-radius: 10px;
     overflow-y: auto;
-    border: #2d2d2d 4px solid;
+    border: #575027 4px solid;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -116,6 +153,13 @@ display: inline-block;
     align-items: center;
 }
 
+#pokedex-control-buttons-plate {
+    background-color: rgb(211, 77, 65);
+    border-radius: 10px;
+    min-width: max-content;
+    min-height: max-content;
+}
+
 .pokedex-control-button {
     width: 70px;
     height: 70px;
@@ -129,41 +173,91 @@ display: inline-block;
 
 </head>
 <body>
-    <input placeholder="Enter Pokemon Name" type="text" id="pokemonName">
-    <button class="btn btn-primary" onclick="fetchData()">Search Pokemon</button><br>
 
 <div id="pokedex-container">
+    <div class="row">
+<div class="col-lg-4">
+    <div class="pokedex-container">
+        <div class="pokedex-title">Popular Pokémon</div>
+    
+        <div class="list-group">
+          <div class="pokemon-item">Bulbasaur</div>
+          <div class="pokemon-item">Ivysaur</div>
+          <div class="pokemon-item">Charmander</div>
+          <div class="pokemon-item">Charizard</div>
+          <div class="pokemon-item">Squirtle</div>
+          <div class="pokemon-item">Pikachu</div>
+          <div class="pokemon-item">Raichu</div>
+          <div class="pokemon-item">Meowth</div>
+          
+          <div class="pokemon-item">Geodude</div>
+          <div class="pokemon-item">Gengar</div>
+          <div class="pokemon-item">Eevee</div>
+          <div class="pokemon-item">Snorlax</div>
+          <div class="pokemon-item">Mewtwo</div>
+        </div>
+      </div>
+
+
+</div>
+<div class="col-lg-4 mt-5 p-2">
+    <div id="pokedex-body-plate" class="bg bg-danger rounded">
+    <div id="pokedex-on-icon"> 
+    
+        
+    
+    </div>
+    
+    
+    
+    
+    
+    <div id="pokedex-user-name"></div>
+    <section>
+        <div id="pokedex-screen" class="pokescreen">
+    
+            <img id="pokemonSprite" class="pokemon-screen-sprite" src=""  style="display: none;" alt="pokemon-sprite">
+            
+            <div class="pokemon-screen-info">
+                <p id="displayWeight"></p>
+                <p id="displayType"></p>
+                <p id="displayAbilities"></p>
+            </div>
+        </div>
+    </section>
+    <!-- controls section -->
+    <div id="pokedex-control-buttons-plate" class="d-flex justify-content-between align-items-center w-50 p-3">
+        <p id="displayName" class="pokemon-screen-name "></p>
+        <!--  -->
+        <!-- pokedex search input btn  -->
+        <div class="">
+            <input placeholder="Enter Pokemon Name" type="text" id="pokemonName">
+            <button class="btn btn-dark ml-2 " onclick="fetchData()">Search Pokemon</button><br>
+       
+    
+             <!--End   -->
+         </div>
+    
+    
+    </div>
+    
+    </div>
+
+</div>
+<div class="col-lg-4">
     <div id="pokedex">
         <img src="img/pokedex.png" alt="">
     </div>
 
-<div id="pokedex-body-plate" class="bg bg-danger rounded">
-<div id="pokedex-on-icon"></div>
-<div id="pokedex-user-name"></div>
-<section>
-    <div id="pokedex-screen" class="pokescreen">
+</div>
 
-        <img id="pokemonSprite" class="pokemon-screen-sprite" src=""  style="display: none;" alt="pokemon-sprite">
-        
-        <div class="pokemon-screen-info">
-            <p id="displayWeight"></p>
-            <p id="displayType"></p>
-            <p id="displayAbilities"></p>
-        </div>
     </div>
-</section>
-<!-- controls section -->
-<div id="pokedex-control-buttons-plate">
-    <p id="displayName" class="pokemon-screen-name"></p>
-<div id="pokedex-no-selectbtn"></div>
-<div id="pokedex-yes-selectbtn"></div>
-<!--  -->
 
 
 
-</div>
 
-</div>
+
+<!-- bodt  og pokedex -->
 
 </div> <!--container close tag-->
 
