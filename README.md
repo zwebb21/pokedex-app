@@ -24,7 +24,8 @@ Working with APIs (fetch, async/await)
 Handling and displaying JSON data
 DOM manipulation and event handling
 Building responsive UI layouts
-Live Demo
+Live Demo( https://zwebb21.github.io/pokedex-app/) 
+
 
 (Insert your GitHub Pages link here)
 
