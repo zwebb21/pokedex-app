@@ -4,304 +4,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon Api Pokedex</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-<style>
-
-body{
-
-text-align: center;
-
-
-}
-
-.pokedex-container {
-      background: #58595a;
-      border-radius: 12px;
-      border: 5px solid rgb(58, 57, 57);
-    
-      padding: 20px;
-      box-shadow: 5px 4px 10px rgba(0,0,0,0.1);
-      max-width: 500px;
-      margin: 40px auto;
-    }
-
-    .pokemon-item {
-      padding: 10px 15px;
-      border-radius: 8px;
-      margin-bottom: 8px;
-      background: rgb(102, 182, 5);
-      transition: 0.2s ease;
-      cursor: pointer;
-    }
-
-    .pokemon-item:hover {
-      background: #088a01;
-      color: rgb(190, 216, 20);
-      transform: translateX(5px);
-    }
-
-    .pokedex-title {
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 15px;
-      font-size: 1.5rem;
-    }
-
-
-
-
-
-
-#pokedex img{
-padding: 20px;
-width: 300px;
-flex: auto;
-display: inline-block;
-}
-
-
-p {         margin: auto;
-        width: min-content;
-    padding: 20px;
-    
-    border-radius: 10px;
-flex: auto;
-display: inline-block;
-
-}
-
-/* screen css */
-#pokedex-body-plate { 
-    width: auto;
-    height: 700px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 25px;
-}
-
-.pokescreen {
-
-    width: 580px;
-    height:400px;
-    background-color: #e1e8b9;
-    color: rgb(0, 0, 0);
-    font-family: 'Courier New', Courier, monospace;
-    padding: 20px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    overflow-y: auto;
-    border: #575027 4px solid;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.pokemon-screen-name {
-    margin: 0;
-    width: auto;
-    font-size: larger;
-    font-weight: bold;
-}
-
-.pokemon-screen-sprite {
-    width: max-content;
-   min-height: 240px;
-    object-fit: contain;
-}
-
-.pokemon-screen-info {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    color: rgb(39, 39, 39);
-    font-weight:bolder;
-}
-
-.pokemon-screen-info p {
-    width: 33%;
-    min-height: 70px;
-    margin: 0;
-    padding: 10px;
-   
-    border-radius: 10px;
-    font-size: 18.5px;
-}
-
-#pokedex-on-icon{
-
-    width: 40px;
-    height: 40px;
-    background-color: rgb(26, 122, 177);
-    border-radius: 50%;
-    align-self: flex-start;
-    margin-top: 20px;
-    margin-left: 20px;
-
-}
-
-#pokedex-control-buttons {
-    width: 580px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#pokedex-control-buttons-plate {
-    background-color: rgb(211, 77, 65);
-    border-radius: 10px;
-    min-width: max-content;
-    min-height: max-content;
-}
-
-.pokedex-control-button {
-    width: 70px;
-    height: 70px;
-    background-color: #2d2d2d;
-    border: 4px solid #111111;
-    border-radius: 50%;
-}
-/* screen css */
-</style>
-
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <!-- script here  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </head>
 <body>
+    <!--    -->
+    <div id="pokedex-container">
+        <div class="row">
+            <div class="col-lg-6 p-5">
+                <div class="pokedex-container">
+                    <div class="pokedex-title">Popular Pokémon</div>
+                    <div class="list-group">
+                        <div class="pokemon-item">Bulbasaur</div>
+                        <div class="pokemon-item">Ivysaur</div>
+                        <div class="pokemon-item">Charmander</div>
+                        <div class="pokemon-item">Charizard</div>
+                        <div class="pokemon-item">Squirtle</div>
+                        <div class="pokemon-item">Pikachu</div>
+                        <div class="pokemon-item">Raichu</div>
+                        <div class="pokemon-item">Meowth</div>
+                        <div class="pokemon-item">Geodude</div>
+                        <div class="pokemon-item">Gengar</div>
+                        <div class="pokemon-item">Eevee</div>
+                        <div class="pokemon-item">Snorlax</div>
+                        <div class="pokemon-item">Mewtwo</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-5 p-3 pokedex-main-column">
+                <div id="pokedex-body-plate" class="bg bg-danger rounded">
+                    <div id="pokedex-on-icon">
 
-<div id="pokedex-container">
-    <div class="row">
-<div class="col-lg-4">
-    <div class="pokedex-container">
-        <div class="pokedex-title">Popular Pokémon</div>
-    
-        <div class="list-group">
-          <div class="pokemon-item">Bulbasaur</div>
-          <div class="pokemon-item">Ivysaur</div>
-          <div class="pokemon-item">Charmander</div>
-          <div class="pokemon-item">Charizard</div>
-          <div class="pokemon-item">Squirtle</div>
-          <div class="pokemon-item">Pikachu</div>
-          <div class="pokemon-item">Raichu</div>
-          <div class="pokemon-item">Meowth</div>
-          
-          <div class="pokemon-item">Geodude</div>
-          <div class="pokemon-item">Gengar</div>
-          <div class="pokemon-item">Eevee</div>
-          <div class="pokemon-item">Snorlax</div>
-          <div class="pokemon-item">Mewtwo</div>
-        </div>
-      </div>
+                    </div>
+
+                    <div id="pokedex-user-name"></div>
+                    <section>
+                        <div id="pokedex-screen" class="pokescreen p-4">
+                            <!-- loading spinner here 👇 -->
+                            <div id="loadingSpinner" class="d-flex justify-content-center my-3" style="display: none;">
+                                <div class="spinner-border text-light" role="status"></div>
+                            </div>
 
 
-</div>
-<div class="col-lg-4 mt-5 p-2">
-    <div id="pokedex-body-plate" class="bg bg-danger rounded">
-    <div id="pokedex-on-icon"> 
-    
-        
-    
-    </div>
-    
-    
-    
-    
-    
-    <div id="pokedex-user-name"></div>
-    <section>
-        <div id="pokedex-screen" class="pokescreen">
-    
-            <img id="pokemonSprite" class="pokemon-screen-sprite" src=""  style="display: none;" alt="pokemon-sprite">
-            
-            <div class="pokemon-screen-info">
-                <p id="displayWeight"></p>
-                <p id="displayType"></p>
-                <p id="displayAbilities"></p>
+                            <img id="pokemonSprite" class="pokemon-screen-sprite" src="" style="display: none;"
+                                alt="pokemon-sprite">
+
+                            <div class="pokemon-screen-info">
+                                <p id="displayWeight"></p>
+                                <p id="displayType"></p>
+                                <p id="displayAbilities"></p>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- controls section -->
+                    <div id="pokedex-control-buttons-plate"
+                        class="d-flex justify-content-between align-items-center w-50 p-3">
+                        <p id="displayName" class="pokemon-screen-name "></p>
+                        <!--  -->
+                        <!-- pokedex search input btn  -->
+                        <div class="">
+                            <input placeholder="Enter Pokemon Name" type="text" id="pokemonName">
+                            <button class="btn btn-dark ml-2 " onclick="fetchData()">Search Pokemon</button><br>
+                            <!--End   -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 p-3">
+                <div id="pokedex">
+                    <!-- <img src="img/pokedex.png" alt=""> -->
+                    <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">About This
+                        App</button>
+
+                    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1"
+                        id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                        <div class="offcanvas-header p-3">
+                            <h3 class="offcanvas-title  fw-bold " id="offcanvasWithBothOptionsLabel"> PokeDex API</h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <p class="text-dark w-100"> Welcome to the <span class="fw-bold text-warning">Pokédex
+                                    🔍</span> — your quick way to explore <span class="text-info">Pokémon data</span>.
+                                Simply <span class="fw-semibold">type a Pokémon’s name</span> into the <span
+                                    class="text-primary">search bar</span> and the app will instantly display its
+                                <span class="fw-bold">name</span> along with a few <span class="text-success">key
+                                    abilities</span>. <br><br> Use this as a starting point to
+                                <span class="text-info">discover different Pokémon</span> and understand how each one is
+                                unique. Each search gives you a quick snapshot, helping you recognize
+                                patterns in abilities and how different Pokémon compare. This is perfect for beginners
+                                who want to quickly learn without being overwhelmed by too much information. <br>
+                                <br> As you continue using the app, try experimenting with different Pokémon names to
+                                see how the results change. Pay attention to how the <span
+                                    class="text-warning">API</span>
+                                responds — this helps you understand how data is being fetched and displayed behind the
+                                scenes. If a Pokémon doesn’t appear, double-check your <span
+                                    class="text-danger">spelling
+                                </span> to ensure accurate results. <br><br> This Pokédex is also a great way to
+                                practice interacting with real-world data in a simple interface. You can use it to
+                                <span class="fw-semibold">compare abilities</span>, recognize familiar Pokémon, and
+                                build a better understanding of how APIs power modern applications. Keep exploring,
+                                keep searching, and use this tool to sharpen both your curiosity and your
+                                development skills 🚀.
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
         </div>
-    </section>
-    <!-- controls section -->
-    <div id="pokedex-control-buttons-plate" class="d-flex justify-content-between align-items-center w-50 p-3">
-        <p id="displayName" class="pokemon-screen-name "></p>
-        <!--  -->
-        <!-- pokedex search input btn  -->
-        <div class="">
-            <input placeholder="Enter Pokemon Name" type="text" id="pokemonName">
-            <button class="btn btn-dark ml-2 " onclick="fetchData()">Search Pokemon</button><br>
-       
-    
-             <!--End   -->
-         </div>
-    
-    
-    </div>
-    
-    </div>
-
-</div>
-<div class="col-lg-4">
-    <div id="pokedex">
-        <img src="img/pokedex.png" alt="">
-    </div>
-
-</div>
-
-    </div>
-<!-- nnnew -->
-
-
-
-
-<!-- bodt  og pokedex -->
-
-</div> <!--container close tag-->
-
-
-
-
-<!-- script logic  -->
-<script>
-//fetch 
-async function fetchData() {
-    try {
-        const displayName = document.getElementById('displayName');
-        const pokemonName = document.getElementById("pokemonName").value.toLowerCase();
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
-
-        if (!response.ok) {
-            throw new Error('Could not fetch resource');
-        }
-// pulling html elements 
-        const data = await response.json();
-        const pokemonSprite = data.sprites.front_default;
-        const imgElement = document.getElementById('pokemonSprite');
-        const displayWeight = document.getElementById('displayWeight');
-            const displayType = document.getElementById('displayType');
-            const displayAbilities = document.getElementById('displayAbilities');
-            
-
-  // Set data
-  displayName.textContent = `Name: ${data.name.charAt(0).toUpperCase() + data.name.slice(1)}`;
-        displayWeight.textContent = `How Heavy: ${data.weight}`;
-        displayType.textContent = `Type: ${data.types.map(t => t.type.name).join(", ")}`;
-        displayAbilities.textContent = `Abilities: ${data.abilities.map(a => a.ability.name).join(", ")}`;
-        imgElement.src = data.sprites.front_default;
-        imgElement.style.display = "";
-
-
-
-
-// error handling
-    } catch (error) {
-        console.error(error);
-    }
-}
-</script>
-
+        <!-- nnnew -->
+        <!-- bodt  og pokedex -->
+    </div> <!--container close tag-->
+    <!-- script logic  -->
+<script src="api.js"></script>
 </body>
+
 </html>
