@@ -40,17 +40,24 @@ body{
 
       .pokemon-item {
         padding: 10px 15px;
+        border: 0;
         border-radius: 8px;
         margin-bottom: 8px;
         background: rgb(102, 182, 5);
         transition: 0.2s ease;
         cursor: pointer;
+        color: #111111;
+        font: inherit;
+        text-align: center;
       }
 
-      .pokemon-item:hover {
+      .pokemon-item:hover,
+      .pokemon-item:focus-visible {
         background: #088a01;
         color: rgb(190, 216, 20);
         transform: translateX(5px);
+        outline: 3px solid #e9ff70;
+        outline-offset: 2px;
       }
 
       .pokedex-title {
@@ -264,3 +271,7 @@ body{
       }
   }
   /* screen css */
+
+
+
+  /* spinner  */

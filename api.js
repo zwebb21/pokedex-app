@@ -1,7 +1,20 @@
-async function fetchData() {
+
+
+
+
+
+// fetch data from pokeapi and display it on the page
+async function fetchData(selectedPokemonName) {
+    const displayName = document.getElementById('displayName');
+
     try {
-        const displayName = document.getElementById('displayName');
-        const pokemonName = document.getElementById("pokemonName").value.toLowerCase();
+        const pokemonName = (selectedPokemonName || document.getElementById("pokemonName").value).trim().toLowerCase();
+
+        if (!pokemonName) {
+            displayName.textContent = "Enter a Pokemon name.";
+            return;
+        }
+
         // 👇 ADD IT RIGHT HERE
         displayName.textContent = "Loading...";
         document.getElementById('displayWeight').textContent = "";
@@ -37,12 +50,74 @@ async function fetchData() {
         // error handling
     } catch (error) {
         console.error(error);
+        displayName.textContent = "Pokemon not found.";
     }
 }
 
-document.querySelectorAll('.pokemon-item').forEach(item => {
-    item.addEventListener('click', () => {
-        document.getElementById('pokemonName').value = item.textContent;
-        fetchData();
+const popularPokemonBatches = [
+    ["Bulbasaur", "Ivysaur", "Charmander", "Charizard", "Squirtle"],
+    ["Pikachu", "Raichu", "Meowth", "Geodude", "Gengar"],
+    ["Eevee", "Snorlax", "Mewtwo", "Mew", "Dragonite"],
+    ["Lucario", "Greninja", "Gardevoir", "Garchomp", "Arcanine"],
+    ["Jigglypuff", "Psyduck", "Machamp", "Lapras", "Vaporeon"],
+    ["Cyndaquil", "Totodile", "Chikorita", "Umbreon", "Espeon"],
+    ["Blastoise", "Venusaur", "Butterfree", "Beedrill", "Pidgeot"],
+    ["Rattata", "Fearow", "Arbok", "Sandslash", "Ninetales"],
+    ["Wigglytuff", "Golbat", "Vileplume", "Parasect", "Dugtrio"],
+    ["Persian", "Golduck", "Primeape", "Poliwrath", "Alakazam"],
+    ["Victreebel", "Tentacruel", "Golem", "Rapidash", "Slowbro"],
+    ["Magneton", "Dodrio", "Dewgong", "Muk", "Cloyster"],
+    ["Hypno", "Kingler", "Electrode", "Marowak", "Hitmonlee"],
+    ["Lickitung", "Weezing", "Rhydon", "Chansey", "Kangaskhan"],
+    ["Seadra", "Starmie", "Scyther", "Jynx", "Electabuzz"],
+    ["Mewtwo", "Mew", "Lugia", "Ho-Oh", "Celebi"],
+
+  ["Kyogre", "Groudon", "Rayquaza", "Jirachi", "Deoxys"],
+
+  ["Dialga", "Palkia", "Giratina", "Darkrai", "Arceus"],
+
+  ["Reshiram", "Zekrom", "Kyurem", "Victini", "Keldeo"],
+
+  ["Xerneas", "Yveltal", "Zygarde", "Diancie", "Hoopa"],
+
+  ["Solgaleo", "Lunala", "Necrozma", "Zeraora", "Meltan"],
+    ["Magmar", "Pinsir", "Tauros", "Gyarados", "Ditto"]
+];
+
+let popularPokemonBatchIndex = 0;
+const popularPokemonList = document.getElementById("popularPokemonList");
+
+function renderPopularPokemon() {
+    if (!popularPokemonList) return;
+
+    popularPokemonList.innerHTML = "";
+
+    popularPokemonBatches[popularPokemonBatchIndex].forEach((pokemonName) => {
+        const pokemonItem = document.createElement("button");
+        pokemonItem.type = "button";
+        pokemonItem.className = "pokemon-item";
+        pokemonItem.textContent = pokemonName;
+        pokemonItem.dataset.pokemonName = pokemonName;
+        popularPokemonList.appendChild(pokemonItem);
     });
-});
+
+    popularPokemonBatchIndex = (popularPokemonBatchIndex + 1) % popularPokemonBatches.length;
+}
+
+function selectPopularPokemon(pokemonName) {
+    document.getElementById("pokemonName").value = pokemonName;
+    fetchData(pokemonName);
+}
+
+if (popularPokemonList) {
+    popularPokemonList.addEventListener("click", (event) => {
+        const pokemonItem = event.target.closest(".pokemon-item");
+
+        if (pokemonItem) {
+            selectPopularPokemon(pokemonItem.dataset.pokemonName);
+        }
+    });
+
+    renderPopularPokemon();
+    setInterval(renderPopularPokemon, 5000);
+}

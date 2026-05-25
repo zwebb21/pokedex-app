@@ -19,7 +19,7 @@
             <div class="col-lg-6 p-5">
                 <div class="pokedex-container">
                     <div class="pokedex-title">Popular Pokémon</div>
-                    <div class="list-group">
+                    <div id="popularPokemonList" class="list-group" aria-live="polite">
                         <div class="pokemon-item">Bulbasaur</div>
                         <div class="pokemon-item">Ivysaur</div>
                         <div class="pokemon-item">Charmander</div>
@@ -46,8 +46,11 @@
                     <section>
                         <div id="pokedex-screen" class="pokescreen p-4">
                             <!-- loading spinner here 👇 -->
-                            <div id="loadingSpinner" class="d-flex justify-content-center my-3" style="display: none;">
+                            <div id="loadingSpinner" class="justify-content-center my-3" style="display:none;">
                                 <div class="spinner-border text-light" role="status"></div>
+
+                            
+
                             </div>
 
 
