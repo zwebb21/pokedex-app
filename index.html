@@ -19,6 +19,9 @@
             <div class="col-lg-6 p-5">
                 <div class="pokedex-container">
                     <div class="pokedex-title">Popular Pokémon</div>
+                    <select id="typeFilter" class="form-select type-filter" aria-label="Filter popular Pokemon by type">
+                        <option value="all">All types</option>
+                    </select>
                     <div id="popularPokemonList" class="list-group" aria-live="polite">
                         <div class="pokemon-item">Bulbasaur</div>
                         <div class="pokemon-item">Ivysaur</div>
@@ -72,7 +75,7 @@
                         <!-- pokedex search input btn  -->
                         <div class="">
                             <input placeholder="Enter Pokemon Name" type="text" id="pokemonName">
-                            <button class="btn btn-dark ml-2 " onclick="fetchData()">Search Pokemon</button><br>
+                            <button id="searchPokemonButton" class="btn btn-dark ml-2" type="button">Search Pokemon</button><br>
                             <!--End   -->
                         </div>
                     </div>
@@ -128,7 +131,9 @@
         <!-- bodt  og pokedex -->
     </div> <!--container close tag-->
     <!-- script logic  -->
-<script src="api.js"></script>
+<script type="module" src="app.js"></script>
+
+<!-- had to make the type a module . to connect js files.  -->
 </body>
 
 </html>
