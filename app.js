@@ -17,8 +17,28 @@ const displayWeight = document.getElementById("displayWeight");//display the wei
 const displayType = document.getElementById("displayType"); //display the type 
 const displayAbilities = document.getElementById("displayAbilities"); //display the abilities. 
 const imgElement = document.getElementById("pokemonSprite"); //display a sprite img of pokemon
- //end 
+const pokemonDisplayCard = document.getElementById("pokemonDisplayCard");
 
+const pokemonTypeStyles = {
+  normal: { background: "#A8A77A", text: "#111111" },
+  fire: { background: "#EE8130", text: "#111111" },
+  water: { background: "#6390F0", text: "#ffffff" },
+  electric: { background: "#F7D02C", text: "#111111" },
+  grass: { background: "#7AC74C", text: "#111111" },
+  ice: { background: "#96D9D6", text: "#111111" },
+  fighting: { background: "#C22E28", text: "#ffffff" },
+  poison: { background: "#A33EA1", text: "#ffffff" },
+  ground: { background: "#E2BF65", text: "#111111" },
+  flying: { background: "#A98FF3", text: "#111111" },
+  psychic: { background: "#F95587", text: "#111111" },
+  bug: { background: "#A6B91A", text: "#111111" },
+  rock: { background: "#B6A136", text: "#111111" },
+  ghost: { background: "#735797", text: "#ffffff" },
+  dragon: { background: "#6F35FC", text: "#ffffff" },
+  dark: { background: "#705746", text: "#ffffff" },
+  steel: { background: "#B7B7CE", text: "#111111" },
+  fairy: { background: "#D685AD", text: "#111111" },
+};
  
 function clearPokemonDisplay() {
   displayWeight.textContent = "";
@@ -26,6 +46,16 @@ function clearPokemonDisplay() {
   displayAbilities.textContent = "";
   imgElement.removeAttribute("src");
   imgElement.style.display = "none";
+  if (pokemonDisplayCard) {
+    pokemonDisplayCard.innerHTML = `
+      <div class="card pokemon-detail-card pokemon-placeholder-card mx-auto">
+        <div class="card-body">
+          <h2 class="card-title">Search a Pokemon</h2>
+          <p class="pokemon-placeholder-text">Pokemon details will show here.</p>
+        </div>
+      </div>
+    `;
+  }
 }
 
 function formatPokemonName(name) {
@@ -36,10 +66,86 @@ function normalizePokemonName(name) {
   return name.toLowerCase();
 }
 
+function formatStatName(statName) {
+  return statName
+    .split("-")
+    .map((word) => formatPokemonName(word))
+    .join(" ");
+}
+
+function getPokemonStat(pokemon, statName) {
+  const stat = pokemon.stats.find((statItem) => statItem.stat.name === statName);
+  return stat ? stat.base_stat : "N/A";
+}
+
+function getPokemonAbilityNames(pokemon) {
+  const abilityNames = pokemon.abilities.map((abilitySlot) => {
+    return formatStatName(abilitySlot.ability.name);
+  });
+
+  while (abilityNames.length < 3) {
+    abilityNames.push("N/A");
+  }
+
+  return abilityNames.slice(0, 3);
+}
+
+function renderPokemonCard(pokemon) {
+  if (!pokemonDisplayCard) return;
+
+  const primaryType = pokemon.types[0]?.type.name || "normal";
+  const typeStyle = pokemonTypeStyles[primaryType] || pokemonTypeStyles.normal;
+  const typeNames = pokemon.types.map((typeSlot) => formatPokemonName(typeSlot.type.name));
+  const abilityNames = getPokemonAbilityNames(pokemon);
+  const stats = ["hp", "attack", "defense", "speed"];
+  const officialArtwork = pokemon.sprites.other["official-artwork"].front_default;
+  const spriteSource = officialArtwork || pokemon.sprites.front_default;
+
+  pokemonDisplayCard.innerHTML = `
+    <div class="card pokemon-detail-card mx-auto" style="background-color: ${typeStyle.background}; color: ${typeStyle.text};">
+      <div class="card-body">
+        <div class="pokemon-card-header">
+          <div>
+            <p class="pokemon-card-number">#${String(pokemon.id).padStart(3, "0")}</p>
+            <h2 class="card-title">${formatPokemonName(pokemon.name)}</h2>
+          </div>
+          <span class="pokemon-type-badge">${typeNames.join(" / ")}</span>
+        </div>
+
+        ${spriteSource ? `<img class="pokemon-card-sprite" src="${spriteSource}" alt="${formatPokemonName(pokemon.name)}">` : ""}
+
+        <div class="pokemon-card-section">
+          <h3>Abilities</h3>
+          <div class="pokemon-card-grid">
+            ${abilityNames.map((abilityName, index) => `
+              <div class="pokemon-card-data">
+                <span>Ability ${index + 1}</span>
+                <strong>${abilityName}</strong>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+
+        <div class="pokemon-card-section">
+          <h3>Stats</h3>
+          <div class="pokemon-card-grid">
+            ${stats.map((statName) => `
+              <div class="pokemon-card-data">
+                <span>${formatStatName(statName)}</span>
+                <strong>${getPokemonStat(pokemon, statName)}</strong>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function getPopularPokemonNames() {
   return popularPokemonBatches.flat();
 }
-//filter names 
+//filter names
 function getPokemonNamesForCurrentFilter() {
   if (selectedType === "all") {
     return getPopularPokemonNames();
@@ -72,6 +178,7 @@ async function fetchData(selectedPokemonName) {
     displayAbilities.textContent = `Abilities: ${pokemon.abilities.map((ability) => ability.ability.name).join(", ")}`;
     imgElement.src = pokemon.sprites.front_default;
     imgElement.style.display = "";
+    renderPokemonCard(pokemon);
   } catch (error) {
     console.error(error);
     displayName.textContent = "Pokemon not found.";

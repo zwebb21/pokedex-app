@@ -235,6 +235,19 @@ body{
       padding: 22px;
   }
 
+  .pokemon-placeholder-card {
+      background: #e1e8b9;
+      color: #111111;
+  }
+
+  .pokemon-placeholder-text {
+      width: auto;
+      margin: 12px 0 0;
+      padding: 0;
+      display: block;
+      font-weight: 700;
+  }
+
   .pokemon-card-header {
       display: flex;
       justify-content: space-between;
