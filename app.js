@@ -1,5 +1,5 @@
 // Control center for page logic.
-import { pokemonTypes, popularPokemonBatches } from "./data.js";
+import { pokemonTypes, popularPokemonBatches,pokemonTypeStyles } from "./data.js";
 import { fetchPokemon, fetchPokemonByType } from "./api.js";
 
 let popularPokemonBatchIndex = 0;
@@ -11,7 +11,7 @@ const typeFilter = document.getElementById("typeFilter");//the filter selection
 const pokemonNameInput = document.getElementById("pokemonName");//the input for name
 const searchButton = document.getElementById("searchPokemonButton");//search btn 
 
-//pokemon attributes and data 
+//pokemon attributes and data for the red pokedex 
 const displayName = document.getElementById("displayName"); //pokemon name
 const displayWeight = document.getElementById("displayWeight");//display the weight 
 const displayType = document.getElementById("displayType"); //display the type 
@@ -19,26 +19,7 @@ const displayAbilities = document.getElementById("displayAbilities"); //display 
 const imgElement = document.getElementById("pokemonSprite"); //display a sprite img of pokemon
 const pokemonDisplayCard = document.getElementById("pokemonDisplayCard");
 
-const pokemonTypeStyles = {
-  normal: { background: "#A8A77A", text: "#111111" },
-  fire: { background: "#EE8130", text: "#111111" },
-  water: { background: "#6390F0", text: "#ffffff" },
-  electric: { background: "#F7D02C", text: "#111111" },
-  grass: { background: "#7AC74C", text: "#111111" },
-  ice: { background: "#96D9D6", text: "#111111" },
-  fighting: { background: "#C22E28", text: "#ffffff" },
-  poison: { background: "#A33EA1", text: "#ffffff" },
-  ground: { background: "#E2BF65", text: "#111111" },
-  flying: { background: "#A98FF3", text: "#111111" },
-  psychic: { background: "#F95587", text: "#111111" },
-  bug: { background: "#A6B91A", text: "#111111" },
-  rock: { background: "#B6A136", text: "#111111" },
-  ghost: { background: "#735797", text: "#ffffff" },
-  dragon: { background: "#6F35FC", text: "#ffffff" },
-  dark: { background: "#705746", text: "#ffffff" },
-  steel: { background: "#B7B7CE", text: "#111111" },
-  fairy: { background: "#D685AD", text: "#111111" },
-};
+
  
 function clearPokemonDisplay() {
   displayWeight.textContent = "";

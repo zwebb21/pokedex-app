@@ -46,3 +46,5 @@ export const legendaryPokemon = [
   ["Solgaleo", "Lunala", "Necrozma", "Zeraora", "Meltan"],
   ["Magmar", "Pinsir", "Tauros", "Gyarados", "Ditto"],
 ];
+
+

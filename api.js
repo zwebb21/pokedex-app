@@ -1,4 +1,5 @@
 
+// This file contains functions to fetch data from the PokeAPI.
 export async function fetchPokemon(pokemonName) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
 //fetching  
@@ -11,6 +12,8 @@ export async function fetchPokemon(pokemonName) {
   return response.json();
 }
 
+
+//fetching pokemon by type. if theres an error show this
 export async function fetchPokemonByType(typeName) {
   const response = await fetch(`https://pokeapi.co/api/v2/type/${typeName}`);
 
