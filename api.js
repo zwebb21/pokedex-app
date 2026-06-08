@@ -1,11 +1,13 @@
 
 export async function fetchPokemon(pokemonName) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+//fetching  
+
 
   if (!response.ok) {
     throw new Error("Could not fetch Pokemon");
   }
-
+//error handling. if theres an error show this 
   return response.json();
 }
 

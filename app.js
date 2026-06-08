@@ -7,15 +7,19 @@ let selectedType = "all";
 let typePokemonNames = [];
 
 const popularPokemonList = document.getElementById("popularPokemonList");
-const typeFilter = document.getElementById("typeFilter");
-const pokemonNameInput = document.getElementById("pokemonName");
-const searchButton = document.getElementById("searchPokemonButton");
-const displayName = document.getElementById("displayName");
-const displayWeight = document.getElementById("displayWeight");
-const displayType = document.getElementById("displayType");
-const displayAbilities = document.getElementById("displayAbilities");
-const imgElement = document.getElementById("pokemonSprite");
+const typeFilter = document.getElementById("typeFilter");//the filter selection 
+const pokemonNameInput = document.getElementById("pokemonName");//the input for name
+const searchButton = document.getElementById("searchPokemonButton");//search btn 
 
+//pokemon attributes and data 
+const displayName = document.getElementById("displayName"); //pokemon name
+const displayWeight = document.getElementById("displayWeight");//display the weight 
+const displayType = document.getElementById("displayType"); //display the type 
+const displayAbilities = document.getElementById("displayAbilities"); //display the abilities. 
+const imgElement = document.getElementById("pokemonSprite"); //display a sprite img of pokemon
+ //end 
+
+ 
 function clearPokemonDisplay() {
   displayWeight.textContent = "";
   displayType.textContent = "";
@@ -35,7 +39,7 @@ function normalizePokemonName(name) {
 function getPopularPokemonNames() {
   return popularPokemonBatches.flat();
 }
-
+//filter names 
 function getPokemonNamesForCurrentFilter() {
   if (selectedType === "all") {
     return getPopularPokemonNames();
