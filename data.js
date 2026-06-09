@@ -17,6 +17,27 @@ export const popularPokemonBatches = [
   ["Mewtwo", "Mew", "Lugia", "Ho-Oh", "Celebi"],
 ];
 //filter types 
+export const pokemonTypeStyles = {
+  normal: { background: "#A8A77A", text: "#111111" },
+  fire: { background: "#EE8130", text: "#111111" },
+  water: { background: "#6390F0", text: "#ffffff" },
+  electric: { background: "#F7D02C", text: "#111111" },
+  grass: { background: "#7AC74C", text: "#111111" },
+  ice: { background: "#96D9D6", text: "#111111" },
+  fighting: { background: "#C22E28", text: "#ffffff" },
+  poison: { background: "#A33EA1", text: "#ffffff" },
+  ground: { background: "#E2BF65", text: "#111111" },
+  flying: { background: "#A98FF3", text: "#111111" },
+  psychic: { background: "#F95587", text: "#111111" },
+  bug: { background: "#A6B91A", text: "#111111" },
+  rock: { background: "#B6A136", text: "#111111" },
+  ghost: { background: "#735797", text: "#ffffff" },
+  dragon: { background: "#6F35FC", text: "#ffffff" },
+  dark: { background: "#705746", text: "#ffffff" },
+  steel: { background: "#B7B7CE", text: "#111111" },
+  fairy: { background: "#D685AD", text: "#111111" },
+};
+
 export const pokemonTypes = [
   "normal",
   "fire",
@@ -46,5 +67,3 @@ export const legendaryPokemon = [
   ["Solgaleo", "Lunala", "Necrozma", "Zeraora", "Meltan"],
   ["Magmar", "Pinsir", "Tauros", "Gyarados", "Ditto"],
 ];
-
-

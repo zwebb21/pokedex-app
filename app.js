@@ -216,35 +216,41 @@ function selectPopularPokemon(pokemonName) {
   fetchData(pokemonName);
 }
 
-searchButton.addEventListener("click", () => {
-  fetchData();
-});
-
-typeFilter.addEventListener("change", async () => {
-  selectedType = typeFilter.value;
-  popularPokemonBatchIndex = 0;
-
-  if (selectedType === "all") {
-    typePokemonNames = [];
-    renderPopularPokemon();
-    return;
-  }
-
-  try {
-    popularPokemonList.innerHTML = '<p class="type-filter-message">Loading type...</p>';
-    typePokemonNames = await fetchPokemonByType(selectedType);
-    renderPopularPokemon();
-  } catch (error) {
-    console.error(error);
-    popularPokemonList.innerHTML = '<p class="type-filter-message">Could not load this type.</p>';
-  }
-});
-
-pokemonNameInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
+if (searchButton) {
+  searchButton.addEventListener("click", () => {
     fetchData();
-  }
-});
+  });
+}
+
+if (typeFilter) {
+  typeFilter.addEventListener("change", async () => {
+    selectedType = typeFilter.value;
+    popularPokemonBatchIndex = 0;
+
+    if (selectedType === "all") {
+      typePokemonNames = [];
+      renderPopularPokemon();
+      return;
+    }
+
+    try {
+      popularPokemonList.innerHTML = '<p class="type-filter-message">Loading type...</p>';
+      typePokemonNames = await fetchPokemonByType(selectedType);
+      renderPopularPokemon();
+    } catch (error) {
+      console.error(error);
+      popularPokemonList.innerHTML = '<p class="type-filter-message">Could not load this type.</p>';
+    }
+  });
+}
+
+if (pokemonNameInput) {
+  pokemonNameInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      fetchData();
+    }
+  });
+}
 
 if (popularPokemonList) {
   popularPokemonList.addEventListener("click", (event) => {
